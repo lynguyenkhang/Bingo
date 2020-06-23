@@ -1,0 +1,11 @@
+extends ../layouts/common
+
+block content
+
+	table.table
+		each row in table
+			tr
+				each num in row
+					td.border.text-center.width-num= num
+
+
