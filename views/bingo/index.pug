@@ -1,11 +1,66 @@
 extends ../layouts/common
 
 block content
+	button.btn.btn-primary.mb-4(onclick="random();") Random
+	span.h1.ml-5(id="random") 
+	div(style="height: 30px;")
+	form(action="/bingo/reset", class="form-search-box" ,method="GET")
+		button.btn.btn-primary Reset
 
 	table.table
 		each row in table
 			tr
 				each num in row
-					td.border.text-center.width-num= num
+					td.border.text-center.width-num
+						label= num
+						input(type="checkbox", id=num).switch
+
+	script.
+
+		//random
+		var oldNumbers = [];
+		function random(){
+			var number = document.getElementById('random');
+			var inLoop = true;
+			while(inLoop){
+				var random = Math.floor(Math.random() * (90 - 1 + 1) + 1);
+				if(oldNumbers.indexOf(random) === -1){
+					oldNumbers.push(random);
+					number.innerHTML = random;
+					var uncheckedNum = document.getElementById(random);
+					if(uncheckedNum !== null){
+						uncheckedNum.setAttribute("class", "switch checked");
+					}	
+					inLoop = false;
+				}
+			}
+		};
+
+
+		var end = false;
+
+		function endGame() {
+			//- while(!end){
+			//- 	for( var row of table){
+			//- 		var checkedNum = 0;
+			//- 		for( var number of row){
+			//- 			if()
+			//- 		}
+
+
+
+			//- 	}
+			//- }
+			console.log(table);
+		};
+		endGame();
+
+
+
+
+
+
+
+
 
 

@@ -24,11 +24,28 @@ function createRandomNum(min, max) { // min and max included
 function randomArr() {
 	var result = [];
 	for(var i = 1; i < 10; i++){
-		var max = i*10 - 1;
-		var min = max - 9;
-		if(min === 0){
-			min = 1;
-		};
+
+		if(i === 9){
+			var max = i*10;
+		} else {
+			var max = i*10 - 1;
+		}
+
+		switch(i){
+			case 1:
+				var min = 1; break;
+			case 9:
+				var min = 80; break;
+			default:
+				var min = max - 9;
+		}
+
+		// if(i === 1 ){
+		// 	var min = 1;
+		// } else {
+		// 	var min = max - 9;
+		// }
+
 		result.push(createRandomNum(min, max));
 	};
 
