@@ -105,14 +105,79 @@ function checkOverlappedTable(table){
 	}
 }
 
+function count(element, arr){
+	var result = 0;
+	for (var ele of arr){
+		if(ele === element){
+			result += 1;
+		}
+	}
+	return result;
+}
+
+// function checkBlankInTable(table){
+// 	for(var i = 0; i < table.length; i++){
+// 		var blankNum = count(' ', table[i]);
+// 		if((blankNum < 3) && (blankNum > 5)){
+// 			checkOverlappedTable(table);
+// 		}
+// 	}
+// }
 
 
-module.exports.randomTable =  function(){
+
+function checkConsecutiveBlanks(arr){
+	var blankArr = [];
+	var result = false;
+	for(var i = 0; i < arr.length; i++){
+		if(arr[i] === " "){
+			blankArr.push(i);
+		}
+	}
+
+	for(var j = 1; j < blankArr.length; i++){
+		var overlapPrevious = (blankArr[j] === (blankArr[j-1] + 1));
+		var overlapAfter = (blankArr[j] === (blankArr[j+1] - 1));
+		if((overlapPrevious) && (overlapAfter)){
+			result = true;
+		}
+	}
+	return result;
+}
+
+
+function makeTable(){
 	var result = [];
 	for(var row = 1; row < 10; row++){
 		result.push(randomArr());
 	};
 	checkOverlappedTable(result);
 
+	// check Blank in table
+	for (var i = 0; i < result.length; i++){
+
+		var col = [];
+		for(var row of result){
+			col.push(row[i]);
+		}
+		var consBlank = checkConsecutiveBlanks(col);
+		var blankNum = count(' ', col);
+
+		if((blankNum > 5) || (blankNum < 3)){
+			result = makeTable();
+		}
+	}
+
 	return result;
 }
+
+
+ module.exports.randomTable = function(){
+ 	var result = makeTable();
+ 	return result;
+ };
+
+
+
+
+

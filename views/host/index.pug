@@ -1,0 +1,88 @@
+extends ../layouts/common
+
+block content
+	div
+		button.btn.btn-primary.mb-5(onclick="random();") Random
+		span.h1.ml-5(id="random") 
+	.d-flex
+		button.btn.btn-secondary.btn-show(onclick="showOldNumbers();", id="btn-show") Show
+		form(action="/host/reset", class="form-search-box" ,method="GET")
+			button.btn.btn-secondary Reset
+		button.btn.btn-danger.btn-clear(onclick="clearAll();") Clear
+
+	div.hidden(id="oldNumbers")
+	table.table.mt-3
+		each row in table
+			tr
+				each num in row
+					td.border.text-center.width-num
+						label= num
+						input(type="checkbox", id=num).switch
+
+
+
+
+
+
+
+
+	script.
+
+		//random
+		var oldNumbers = [];
+		var oldNumbersString = [];
+		function random(){
+			var number = document.getElementById('random');
+			var inLoop = true;
+			while(inLoop){
+				var random = Math.floor(Math.random() * (90 - 1 + 1) + 1);
+				if(oldNumbers.indexOf(random) === -1){
+					oldNumbers.push(random);
+					oldNumbersString.push(" " + JSON.stringify(random));
+
+					document.getElementById('oldNumbers').innerHTML = oldNumbersString;
+					number.innerHTML = random;
+
+					var uncheckedNum = document.getElementById(random);
+					if(uncheckedNum !== null){
+						uncheckedNum.setAttribute("class", "switch checked");
+					}	
+					inLoop = false;
+				}
+			}
+		};
+
+
+		function showOldNumbers(){
+			document.getElementById("oldNumbers").classList.remove("hidden");
+			var btn = document.getElementById("btn-show");
+			btn.setAttribute("onclick", "hideOldNumbers();");
+			btn.innerHTML = "Hide";
+		}
+
+		function hideOldNumbers(){
+			document.getElementById("oldNumbers").classList.add("hidden");
+			var btn = document.getElementById("btn-show");
+			btn.setAttribute("onclick", "showOldNumbers();");
+			btn.innerHTML = "Show";
+		}
+
+		function clearAll(){
+			for( var i = 1; i < 91; i++){
+				if(document.getElementById(i)){
+					document.getElementById(i).classList.remove("checked");
+				}
+			}
+			oldNumbers.length = 0;
+			oldNumbersString.length = 0;
+		}
+
+
+
+
+
+
+
+
+
+

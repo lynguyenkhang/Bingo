@@ -1,3 +1,4 @@
+
 var js = require('../js/bingo.js');
 
 	
@@ -5,7 +6,7 @@ var js = require('../js/bingo.js');
 module.exports.index = function(req, res, next){
 	var table = js.randomTable();
 
-	res.render('bingo/index', {
+	res.render('host/index', {
 		table: table
 	});
 }
@@ -13,7 +14,7 @@ module.exports.index = function(req, res, next){
 module.exports.reset = function(req,res, next){
 	var table = js.randomTable();
 
-	res.render('bingo/index', {
+	res.render('host/index', {
 		table: table
 	})
 }
