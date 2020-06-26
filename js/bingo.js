@@ -14,6 +14,33 @@ function randomBlank(){
 		result = [num1, num2, num3, num4];
 	}
 
+	result = result.sort();
+	// for( var i = 1; i < result.length; i++){
+
+	// 	// check 3 continous blank
+	// 	var overlapPrevious = (result[i] === (result[i-1] + 1));
+	// 	var overlapAfter = (result[i] === (result[i+1] - 1));
+	// 	var checkContinous = overlapAfter && overlapPrevious;
+
+
+
+	// }
+	var distanceBlank = ((result[1] > (result[0] + 4)) || (result[2] > (result[1] + 4)) || (result[3] > (result[2] + 4)));
+
+	var consBlank = (((result[0] + 1) === result[1]) && ((result[1] + 1) === result[2]) && ((result[2] + 1) === result[3]));
+	var firstBlankPostion = (result[0] > 2);
+
+		if((consBlank) || (firstBlankPostion) ||(distanceBlank)){
+			result = randomBlank();
+		}
+
+	// if( ((result[1]-result[0]) === 1) && ((result[2] - result[1]) === 1) && ((result[3] - result[2]) === 1) ){
+	// 	result = randomBlank();
+	// }
+
+
+
+
 	return result;
 }
 
@@ -133,18 +160,23 @@ function checkConsecutiveBlanks(arr){
 		if(arr[i] === " "){
 			blankArr.push(i);
 		}
+		// var j = arr.indexOf(" ",i);
+		// blankArr.push(j);
+		// i = j + 1;
 	}
 
-	for(var j = 1; j < blankArr.length; i++){
+	for(var j = 1; j < blankArr.length; j++){
 		var overlapPrevious = (blankArr[j] === (blankArr[j-1] + 1));
 		var overlapAfter = (blankArr[j] === (blankArr[j+1] - 1));
 		if((overlapPrevious) && (overlapAfter)){
 			result = true;
+			break;
 		}
 	}
 	return result;
 }
 
+var loop = 0;
 
 function makeTable(){
 	var result = [];
@@ -161,9 +193,11 @@ function makeTable(){
 			col.push(row[i]);
 		}
 		var consBlank = checkConsecutiveBlanks(col);
+		// console.log(consBlank);
+		loop+= 1;
 		var blankNum = count(' ', col);
 
-		if((blankNum > 5) || (blankNum < 3)){
+		if((blankNum > 5) || (blankNum < 3) || (consBlank)){
 			result = makeTable();
 		}
 	}
@@ -171,9 +205,22 @@ function makeTable(){
 	return result;
 }
 
+// function nullBlank(){
+// 	for( var i = 1; i < 91; i++){
+// 		var element = document.getElementById(i);
+// 		if(element.innerText === " "){
+// 			element.setAttribute("class", " switched nullBlank")
+// 		}
+// 	}
+// }
+
+
 
  module.exports.randomTable = function(){
  	var result = makeTable();
+ 	// nullBlank();
+ 	console.log(loop);
+ 	loop = 0;
  	return result;
  };
 

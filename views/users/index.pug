@@ -2,28 +2,52 @@ extends ../layouts/common
 
 block content
 	.d-flex
-		form(action="/users/reset", class="form-search-box" ,method="GET")
-			button.btn.btn-secondary Reset
-		button.btn.btn-danger.btn-clear(onclick="clearAll();") Clear
+		form(action="/users/reset", class="form-search-box mb-0" ,method="GET")
+			button.btn.btn-primary Reset
+		button.btn.btn-danger.btn-clear.ml-auto(onclick="clearAll();") Clear
 	//- div.hidden(id="oldNumbers")
 	table.table.mt-3
 		each row in table
 			tr
 				each num in row
-					td.border.text-center.width-num
-						label= num
-						input(type="checkbox", id=num).switch-users
+					td.border.text-center.width-num.z-index-0
+						input(type="checkbox", id=num, onclick="addCheck("+num+");").switch-users.border-0
+						label.text-white.font-weight-bold= num
 
 
 
 
 	script. 
 
+
+		function addCheck(id){
+			var element = document.getElementById(id);
+			if(element !== null){
+				element.classList.add("checked");
+				element.setAttribute("onclick", "removeCheck(" + id + ");");
+			}
+		}	
+
+		function removeCheck(id){
+			var element = document.getElementById(id);
+			if(element !== null){
+				element.classList.remove("checked");
+				element.setAttribute("onclick", "addCheck(" + id + ");");
+			}
+		}	
+
 		function clearAll(){
 			for( var i = 1; i < 91; i++){
+					removeCheck(i);
+				}
+		}
+		
+
+		function colorNumber(){
+			for( var i = 1; i < 91; i++){
 				if(document.getElementById(i)){
-					document.getElementById(i).checked = false;
+					document.getElementById(i).classList.add("colorNumber");
 				}
 			}
 		}
-
+		colorNumber();

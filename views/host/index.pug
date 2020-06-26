@@ -6,18 +6,19 @@ block content
 		span.h1.ml-5(id="random") 
 	.d-flex
 		button.btn.btn-secondary.btn-show(onclick="showOldNumbers();", id="btn-show") Show
-		form(action="/host/reset", class="form-search-box" ,method="GET")
-			button.btn.btn-secondary Reset
-		button.btn.btn-danger.btn-clear(onclick="clearAll();") Clear
+		.d-flex.ml-auto
+			form(action="/host/reset", class="form-search-box m-0" ,method="GET")
+				button.btn.btn-secondary Reset
+			button.btn.btn-danger.btn-clear(onclick="clearAll();") Clear
 
 	div.hidden(id="oldNumbers")
-	table.table.mt-3
+	table.table.mt-3.text-white
 		each row in table
 			tr
 				each num in row
 					td.border.text-center.width-num
-						label= num
-						input(type="checkbox", id=num).switch
+						label.mb-0.font-weight-bold= num
+						input(type="checkbox", id=num).switch.border-0
 
 
 
@@ -45,7 +46,7 @@ block content
 
 					var uncheckedNum = document.getElementById(random);
 					if(uncheckedNum !== null){
-						uncheckedNum.setAttribute("class", "switch checked");
+						uncheckedNum.classList.add("checked");
 					}	
 					inLoop = false;
 				}
@@ -71,14 +72,21 @@ block content
 			for( var i = 1; i < 91; i++){
 				if(document.getElementById(i)){
 					document.getElementById(i).classList.remove("checked");
+					document.getElementById(i).classList.add("colorNumber");
 				}
 			}
 			oldNumbers.length = 0;
 			oldNumbersString.length = 0;
 		}
 
-
-
+		function colorNumber(){
+			for( var i = 1; i < 91; i++){
+				if(document.getElementById(i)){
+					document.getElementById(i).classList.add("colorNumber");
+				}
+			}
+		}
+		colorNumber();
 
 
 
