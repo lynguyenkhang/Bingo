@@ -1,18 +1,20 @@
 extends ../layouts/common
 
 block content
-	.d-flex
+	.function-box
 		form(action="/users/reset", class="form-search-box mb-0" ,method="GET")
 			button.btn.btn-primary Reset
 		button.btn.btn-danger.btn-clear.ml-auto(onclick="clearAll();") Clear
-	//- div.hidden(id="oldNumbers")
-	table.table.mt-3
+	//- div(style="height: 20px;")
+	table.table.table-box-user
 		each row in table
 			tr
 				each num in row
 					td.border.text-center.width-num.z-index-0
-						input(type="checkbox", id=num, onclick="addCheck("+num+");").switch-users.border-0
+						input(type="checkbox", id=num).switch-users.border-0
 						label.text-white.font-weight-bold= num
+						// transparent button 			
+						div.opacity-btn(onclick="addCheck("+num+");", id="btn-"+num)
 
 
 
@@ -22,17 +24,19 @@ block content
 
 		function addCheck(id){
 			var element = document.getElementById(id);
+			var btn = document.getElementById("btn-"+id);
 			if(element !== null){
 				element.classList.add("checked");
-				element.setAttribute("onclick", "removeCheck(" + id + ");");
+				btn.setAttribute("onclick", "removeCheck(" + id + ");");
 			}
 		}	
 
 		function removeCheck(id){
 			var element = document.getElementById(id);
+			var btn = document.getElementById("btn-"+id);
 			if(element !== null){
 				element.classList.remove("checked");
-				element.setAttribute("onclick", "addCheck(" + id + ");");
+				btn.setAttribute("onclick", "addCheck(" + id + ");");
 			}
 		}	
 

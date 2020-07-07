@@ -1,18 +1,18 @@
 extends ../layouts/common
 
 block content
-	div
-		button.btn.btn-primary.mb-5(onclick="random();") Random
-		span.h1.ml-5(id="random") 
-	.d-flex
-		button.btn.btn-secondary.btn-show(onclick="showOldNumbers();", id="btn-show") Show
+	.function-box
+		button.btn.btn-primary(onclick="random();") Random
+		span.ml-3.mb-0.random-num(id="random") 
 		.d-flex.ml-auto
-			form(action="/host/reset", class="form-search-box m-0" ,method="GET")
-				button.btn.btn-secondary Reset
-			button.btn.btn-danger.btn-clear(onclick="clearAll();") Clear
+			button.btn.btn-secondary.margin-left(onclick="showOldNumbers();", id="btn-show") Show
 
-	div.hidden(id="oldNumbers")
-	table.table.mt-3.text-white
+			form.form-search-box.mb-0.margin-left(action="/host/reset",method="GET")
+				button.btn.btn-secondary Reset
+			button.btn.btn-danger.margin-left(onclick="clearAll();") Clear
+	//- div(style="height: 20px;")
+	div.hidden.old-numbers(id="oldNumbers")
+	table.table.mt-3.text-white.table-box
 		each row in table
 			tr
 				each num in row

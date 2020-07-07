@@ -4,23 +4,50 @@ body{
     font-size: 1.5rem !important;
 }
 
+.wrapper{
+    padding: 0px 3rem;
+}
+
+.wrapper-button{
+    padding: 0px 2rem;
+}
+
 .two-rem{
     font-size: 2rem !important;
 }
+
 .width-num {
-	width: 50px;
+	width: 10vw;
 	position: relative;
 	border: 3px solid #e8ebff !important;
     border-radius: 8px;
     vertical-align: middle !important;
 
-    height:  6rem;
-    font-size: 1.3rem;
+    height: 6.6vh;
+    font-size: .8rem;
+    padding: .5rem !important;
 
 }
 
+.random-num{
+    font-weight: 500;
+    font-size: 1.3rem;
+}
+
+.table-box{
+    margin-top: 2vh !important;
+}
+.table-box-user{
+    margin-top: 2.5vh !important;
+}
+
 button {
-    font-size: 1.5rem !important;
+/*    font-size: 2rem !important;
+    height: 75px;*/
+    font-size: 1rem;
+    height: max-content;
+    border-radius: 10px !important;
+    box-shadow: 0px 0px 10px 1px #888 !important;
 }
 
  
@@ -92,16 +119,10 @@ button {
     display: inline-block;
 }
 
-.btn-show {
-    margin: 0px 1rem 1rem 0px;
-}
-
-.btn-clear { 
-    margin: 0px 1rem 1rem 2.5rem;
-}
 
 .flex-start {
     justify-content: flex-start !important;
+    font-size: 1.3rem;
 }
 
 .colorNumber {
@@ -115,8 +136,52 @@ button {
     z-index: 2;
 }
 
+.margin-left{
+    margin-left: .5rem;  
+}
 
-@media
+.old-numbers{
+    font-size: .8rem;
+    margin-top: 1.5vh;
+    line-height: normal !important;
+}
+
+.opacity-btn{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+
+.function-box {
+    display: flex;
+    align-items: center;
+}
+
+
+.function-box button {
+    font-size: .8rem !important
+}
+
+/*@media(min-width: 550px){
+    button {
+        font-size: 1.5rem !important;
+        height: 60px;
+    }
+    .width-num {
+        height: 5rem;
+    }
+    .table-box{
+        margin-top: 30px !important;
+    }
+    .old-numbers{
+        font-size: 1.4rem;
+        margin-top: 15px;
+    }
+}*/
+
 
 
 

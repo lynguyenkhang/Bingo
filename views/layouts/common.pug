@@ -1,16 +1,18 @@
 html
 	head
 		title Bingo Game
+		meta(content="width=device-width, initial-scale=1" name="viewport")
+
 		link(href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css", rel="stylesheet")
 		link(rel="stylesheet", href="/styles/index.css")
 	body
 		nav.navbar.navbar-light.bg-light.flex-start
 			a.navbar-brand.two-rem(href='/') Bingo
 			a.nav-item.nav-link.text-muted(href='/host') Host
-			a.nav-item.nav-link.text-muted(href='/users') User
+			a.nav-item.nav-link.text-muted(href='/users') Users
 
 
-		div(style="height: 50px;")
+		div(style="height: 30px;")
 		.container
 			block content
 		
