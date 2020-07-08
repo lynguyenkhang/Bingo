@@ -12,15 +12,30 @@ block content
 			button.btn.btn-danger.margin-left(onclick="clearAll();") Clear
 	//- div(style="height: 20px;")
 	div.hidden.old-numbers(id="oldNumbers")
-	table.table.mt-3.text-white.table-box
-		each row in table
+
+	table.table.text-white.m-0
+		each row in tableTop
 			tr
 				each num in row
 					td.border.text-center.width-num
 						label.mb-0.font-weight-bold= num
 						input(type="checkbox", id=num).switch.border-0
-
-
+	.blank
+	table.table.text-white.m-0
+		each row in tableMid
+			tr
+				each num in row
+					td.border.text-center.width-num
+						label.mb-0.font-weight-bold= num
+						input(type="checkbox", id=num).switch.border-0
+	.blank
+	table.table.text-white.m-0
+		each row in tableBot
+			tr
+				each num in row
+					td.border.text-center.width-num
+						label.mb-0.font-weight-bold= num
+						input(type="checkbox", id=num).switch.border-0
 
 
 

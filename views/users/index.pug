@@ -6,8 +6,9 @@ block content
 			button.btn.btn-primary Reset
 		button.btn.btn-danger.btn-clear.ml-auto(onclick="clearAll();") Clear
 	//- div(style="height: 20px;")
-	table.table.table-box-user
-		each row in table
+
+	table.table.mb-0
+		each row in tableTop
 			tr
 				each num in row
 					td.border.text-center.width-num.z-index-0
@@ -16,8 +17,26 @@ block content
 						// transparent button 			
 						div.opacity-btn(onclick="addCheck("+num+");", id="btn-"+num)
 
-
-
+	.blank
+	table.table.mb-0
+		each row in tableMid
+			tr
+				each num in row
+					td.border.text-center.width-num.z-index-0
+						input(type="checkbox", id=num).switch-users.border-0
+						label.text-white.font-weight-bold= num
+						// transparent button 			
+						div.opacity-btn(onclick="addCheck("+num+");", id="btn-"+num)
+	.blank
+	table.table.mb-0
+		each row in tableBot
+			tr
+				each num in row
+					td.border.text-center.width-num.z-index-0
+						input(type="checkbox", id=num).switch-users.border-0
+						label.text-white.font-weight-bold= num
+						// transparent button 			
+						div.opacity-btn(onclick="addCheck("+num+");", id="btn-"+num)
 
 	script. 
 

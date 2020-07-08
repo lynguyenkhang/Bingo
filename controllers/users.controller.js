@@ -5,15 +5,20 @@ module.exports.index = function(req, res, next){
 	var table = js.randomTable();
 
 	res.render('users/index', {
-		table: table
+		tableTop: table.slice(0,3),
+		tableMid: table.slice(3,6),
+		tableBot: table.slice(6)
 	});
 }
+
 
 
 module.exports.reset = function(req,res, next){
 	var table = js.randomTable();
 
 	res.render('users/index', {
-		table: table
-	})
+		tableTop: table.slice(0,3),
+		tableMid: table.slice(3,6),
+		tableBot: table.slice(6)
+	});
 }
